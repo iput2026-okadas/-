@@ -175,12 +175,12 @@ class IntercomFaceRecognitionSystem:
             with open(image_path, 'rb') as f:
                 files = {'file': (image_path.name, f)}
                 
-                content = f"🚪 **訪問者検知**\n"
-                content += f"👤 {name}\n"
-                content += f"⏰ {datetime.now().strftime('%Y年%m月%d日 %H:%M:%S')}\n"
+                content = f" **訪問者検知**\n"
+                content += f" {name}\n"
+                content += f" {datetime.now().strftime('%Y年%m月%d日 %H:%M:%S')}\n"
                 
                 if confidence > 0:
-                    content += f"📊 信頼度: {confidence:.2%}"
+                    content += f" 信頼度: {confidence:.2%}"
                 
                 data = {
                     'content': content,
@@ -216,7 +216,7 @@ class IntercomFaceRecognitionSystem:
         
         self.last_detection_time = current_time
         logging.info("=" * 50)
-        logging.info("🔔 インターホン検知！")
+        logging.info("インターホン検知！")
         
         # 写真撮影
         result = self.capture_photo()
