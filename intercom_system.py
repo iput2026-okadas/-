@@ -88,7 +88,7 @@ class IntercomFaceRecognitionSystem:
                     logging.warning(f"✗ 顔が検出できませんでした: {image_path.name}")
             
             except Exception as e:
-                logging.error(f"✗ エラー ({image_path.name}): {e}")
+                logging.error(f"エラー ({image_path.name}): {e}")
         
         logging.info(f"合計 {len(self.known_names)} 人を登録しました")
     
@@ -230,10 +230,10 @@ class IntercomFaceRecognitionSystem:
         is_family, name, confidence = self.recognize_face(frame)
         
         if is_family:
-            logging.info(f"✓ 家族を認識: {name} (信頼度: {confidence:.2%})")
+            logging.info(f"家族を認識: {name} (信頼度: {confidence:.2%})")
             # 家族の場合は通知なし
         else:
-            logging.warning(f"⚠ 家族以外を検知: {name}")
+            logging.warning(f"家族以外を検知: {name}")
             # 通知を送信
             self.send_discord_notification(name, confidence, image_path)
         
